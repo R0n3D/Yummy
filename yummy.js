@@ -56,5 +56,5 @@ app.get('/add',hostages.getAddPage);
 app.listen(port, () => {
 
     console.log(`Listening on the port ${port}`)
-
+    
 })

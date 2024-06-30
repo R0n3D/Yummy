@@ -1,34 +1,73 @@
-USE yummy;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 30, 2024 at 02:44 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
-DROP TABLE IF EXISTS food;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE TABLE food (
-    id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL UNIQUE KEY,
-    kosher_type CHAR(5) NULL, -- MILK,MEAT,PARVE
-    cuisine_id TINYINT NULL,
-    image VARCHAR(250) NOT NULL,
-    calories SMALLINT NULL,
-    prepare_time_min SMALLINT NOT NULL, 
-    type_of_dish VARCHAR(15) NULL -- DESSERT,SOUP,MAIN,SIDE DISH,DRINK
-);
 
-/**
-1byte = 8bits
-00000000
-2^8 = 256 (0-255)
-*/
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-INSERT INTO food (name,kosher_type,cuisine_id,
-    image, calories, prepare_time_min, 
-    ingredients,  type_of_dish)
-VALUES ('Hamburger','parve',1,'chummus-masbacha.jpg',
-    550,120,'chumus, tchina, oil','main'),
- ('sushi','parve',2,'sushi.jpeg',
-    250,90,'rice, nuri, avocado','main'),
- ('pavlova','milk',3,'pavlova.jpg',
-    330,180,'eggs, whipped cream , crunberry',
-    'dessert'),
- ('kube selek','meat',4,'kube-selek.jpeg',
-    370, 180,'beetroot, meat, semolina',
-    'main');
+--
+-- Database: `yummy`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hostages`
+--
+
+CREATE TABLE `hostages` (
+  `id` smallint(6) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `image` varchar(250) NOT NULL,
+  `days` varchar(255) DEFAULT NULL,
+  `type_of_person` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hostages`
+--
+
+INSERT INTO `hostages` (`id`, `name`, `city`, `image`, `days`, `type_of_person`) VALUES
+(1, 'Kfir ben Shiri (Bibas)', 'Nir Oz', 'kfir.jpg', '550', 'child'),
+(2, 'Ariel ben Shiri (Bibas)', 'Nir Oz', 'ArielBibs.jpg', '250', 'child'),
+(3, 'Shiri ben Penina (Bibas)', 'Nir Oz', 'shiri.jpeg', '330', 'adult'),
+(4, 'Yarden ben Penina (Bibas)', 'Nir Oz', 'yardenbibas.jpg', '370', 'adult');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `hostages`
+--
+ALTER TABLE `hostages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `hostages`
+--
+ALTER TABLE `hostages`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
